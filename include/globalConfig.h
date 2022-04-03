@@ -34,8 +34,8 @@ const int NUM_VOLTS = 5;
 #define NUM_LEDS 105
 
 // was in secrets.h
-String hostName = "ledman-studio-couch";    // hostname as seen on network and home page
-String friendlyName = "Studio Couch";       // friendly name for home page
+String hostName = "ledman-studio-counch";    // hostname as seen on network and home page
+String friendlyName = "Studio Counch";       // friendly name for home page
 String softwareVersion = "2.26.24";         // used for about page
 String deviceFamily = "ESP32-ELOTA-Matrix"; // used for about page
 String description = "LEDs baby!";          // used for about page
@@ -48,3 +48,4 @@ String globalIP = "";
 String g_temperature = "";
 String g_pageTitle = hostName + " | " + description; // home page title
 String g_friendlyName = friendlyName + " Lights";
+bool g_isAccessPoint = true;

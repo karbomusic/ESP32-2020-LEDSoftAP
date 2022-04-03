@@ -20,9 +20,20 @@ extern String softwareVersion; // used for OTA updates & about page
 extern String deviceFamily;    // used for OTA updates & about page
 extern String description;     // used for about page
 extern String globalIP;        // needed for about page
+extern String softap_ssid;
+extern String softap_password;
 
+void startSoftAP(){
+    WiFi.softAP(softap_ssid.c_str(), softap_password.c_str());
+    globalIP = WiFi.softAPIP().toString();
+    Serial.println("SoftAP IP: " + globalIP);
+}
 void startWifi()
 {
+    if(g_isAccessPoint)
+    {
+        startSoftAP();
+    }
     // Connect to WiFi network
     Serial.print("SSID: ");
     Serial.println(ssid);
@@ -50,6 +61,8 @@ void startWifi()
         }
     }
 
+    WiFi.softAPConfig(WiFi.localIP(), WiFi.localIP(), IPAddress(255, 255, 255, 0));   // subnet FF FF FF 00
+    
     // We're connected...
     WiFi.setHostname(hostName.c_str());
     WiFi.hostname(hostName.c_str());
@@ -57,6 +70,8 @@ void startWifi()
     Serial.println("WiFi connected");
     Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
+    Serial.print("SoftAP IP: ");
+    Serial.println(WiFi.softAPIP().toString());
     Serial.print("MAC address: ");
     Serial.println(WiFi.macAddress());
     Serial.print("Hostname: ");

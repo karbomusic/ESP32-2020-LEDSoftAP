@@ -15,3 +15,5 @@
 
 String ssid = STASSID;                         // WiFi ssid
 String password = STAPSK;                      // WiFi password
+String softap_ssid = "LEDMAN-MSFT";          // WiFi softap ssid
+String softap_password = "creekvalley124";      // WiFi softap password
